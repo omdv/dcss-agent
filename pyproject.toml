@@ -1,0 +1,51 @@
+[project]
+name = "dcss-state-parser"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "faiss-cpu>=1.10.0",
+    "httpx>=0.28.1",
+    "loguru>=0.7.3",
+    "mcp[cli]>=1.6.0",
+    "neptune>=1.13.0",
+    "numpy>=2.2.4",
+    "pexpect>=4.9.0",
+    "pydantic-ai>=0.0.52",
+    "tiktoken>=0.9.0",
+]
+
+[tool.pre-commit]
+hooks = [
+  { id = "pre-commit", entry = "pre-commit run --all-files" },
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+indent-width = 2
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "I001",
+  "INP001",
+  "S603",
+]
+
+# Formatter settings
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[dependency-groups]
+dev = [
+  "flask>=3.1.0",
+  "jupyterlab>=4.3.6",
+  "pulumi-aws>=6.73.0",
+  "pulumi-docker>=4.6.2",
+  "pulumi-random>=4.18.0",
+  "pulumi>=3.157.0",
+]

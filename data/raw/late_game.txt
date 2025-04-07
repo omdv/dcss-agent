@@ -1,0 +1,78 @@
+This guide covers basic character build strategy for players that already have at least one rune, and are planning to get 3-4 runes before leaving with the Orb of Zot. This guide builds off what was covered in mid-game strategy.
+
+Wrapping up our skills for our characters...
+
+Melee Focused
+
+Melee focused players remain heavy armour, heavy damage, melee fighters.
+Weapon
+
+Weapon skill should go to all the way to your weapon's minimum delay, if you haven't reached it already. Most one-handers should already have reached mindelay, but the biggest weapons require more training:
+
+    24 for Executioner's axe, Bardiche, Giant spiked club
+    22 for Triple sword
+    20 for Great mace, Battleaxe, Glaive, Great sword
+
+Even past mindelay, you can choose to keep training. The fine-tuning doesn't really matter at this stage; you can keep skill at the mindelay threshold, or continue training up to the maximum of 27. Weapons with lower mindelays, like demon whips and eveningstars, will want at least a little more skill in order to improve their damage.
+
+By now, many of the rarer weapons start to become available. Consult the weapon choice article for more details, though switching weapon schools by this stage is rarely a good idea. Regardless, Short Blades users should start considering swapping to Long Blades (or another weapon school). Stabbing an orb of fire is, too often, an impossible task.
+Defense
+
+If you've been training up specific skills, your main defenses: Fighting, Armour, Dodging, and/or Shields might be lacking. Ideally, two of Armour, Dodging, and Shields should be at least ten, while Fighting still remains an important skill to train. Well before Zot, your fighting skill should surpass even your weapon skill in importance.
+Range
+
+Throwing, assuming you have plenty of javelins left, should be raised anywhere from 10, up to the javelin mindelay of 16. Don't throw them all the time, or they'll run out quick (unless you are worshipping Okawaru). Size matters; kobolds and spriggans can't use javelins, while trolls and ogres might want to train further to boost large rocks.
+
+The same strategy applies to Evocations, but as they have no mindelay, you can choose to train them up to 27. A wand of acid and wand of iceblast remain great for the entire game, while hex wands still have plenty of weaker targets to disable. Many of the XP evocables, such as a condenser vane or tin of tremorstones, also have great effects when invested into.
+
+Once again, consider low-level utility spells like Apportation, Blink, and Animate Dead. By now, getting the skill for them should be much more realistic. Unless you plan to go beyond a 3-5 rune game, attacking spells simply won't be useful.
+Spell Focused
+
+Spell focused characters focus their efforts on one or a few spells to do their deadly work.
+Weapon
+
+If your character has extreme aptitudes for a weapon (+3 or +4), consider a melee focused end-game weapon. Otherwise, only bother with magical staves, one-handed weapons, or amazing unrands.
+Spellcasting
+
+Spell levels start to become more of an issue as they get more complex. By now, you can also freely train spellcasting in order to raise maximum MP.
+Spell Schools
+
+Assuming you've found a Zot viable spell, stick with that spell school. Think Bombard, Summon Horrible Things, Orb of Destruction, or pretty much any level 9 spell. However, level 9 spells are difficult to cast if you don't have amazing aptitudes or some form of wizardry.
+
+If you haven't found one, you should be planning ahead to switch foci somewhere well before you approach a second rune. Whenever it'd be melee, range, or another spell school, you know you'll have to deal with ancient liches and orbs of fire in Zot:5.
+
+Once you found that spell, you'll want as much spellpower as possible for your offensive spells. More reliable, more powerful, the better.
+Defense
+
+Once you get your Zot-killing spell viable, your defenses should become a greater priority. Typically, you'll want to train Fighting and Dodging, as well as enough skill to cast while wearing a shield. All two-three skills should be raised above level 12 or so.
+Spell Choice
+
+By this point in the game, the amount of experience you have is so high that the lines between melee focused players and spell focused players gets considerably blurred. Thus, it's easiest to divide spell choice by armour level and category.
+Choice by Armour
+Light (Robe)
+
+Going with a robe, troll leather armour, or lighter dragon scales is the most common choice for spell-focused players. It's best for characters with no weapon or using a weapon only as emergency/clean-up. Any level of spell choice can be considered.
+
+However, 9th level spells are still an awkward choice for some species even in robes. Minotaurs and Trolls, for example, should not even consider casting them. Other players may choose not to bother, using lesser attack spells like Freezing Cloud and taking advantage of a wider variety of utility spells with the spare spell slots.
+Mid (Dragon Scales)
+
+Players in fire dragon armour or heavier have generally foregone the thought of 9th level spells. Their highest level of offense is likely to be spells like Borgnjor's Vile Clutch, Bombard, and Orb of Destruction.
+
+This is a choice best for those who either were formerly melee focused and now want some escape options, for those casters who don't wish to cast level 9 spells, or for those severely lacking in resists. Additionally, some species may be forced into it, with a lack of equipment options.
+
+Furthermore, this is not a permanent decision, and heavy dragon armour may be used temporarily before learning higher level spells.
+Heavy (Plate)
+
+Plate armour, as well as crystal plate armour and gold dragon scales, are the choice for those foregoing offensive magic altogether. Exceptions include worshippers of the god Cheibriados, the divine demigods, and those going past a 3-runer.
+Natural
+
+Certain Talismans will outright meld your armour with whatever your form provides. Statue Form, Dragon Form, and Storm Form all provide AC, HP, and/or EV. These transformations do not disrupt casting.
+
+Characters training a lot of Shapeshifting may enjoy the benefit of a Death talisman, great for a 15-rune run, or simply closing out a 3-5 rune game. It does not meld any equipment slots, and provides interesting resistances and melee debuffs.
+Choice by category
+
+If you choose to go with a 9th level spell, don't be picky: they are a massive investment in experience. You must have been training the school for most of the game to consider one. And unless you worship Vehumet -- and sometimes even then -- you might not get a 9th level spell reliable until you're just finishing your last rune. Don't try to focus on them; it won't help you survive with your problems now. Get your defenses and utility skill up, first.
+
+All players relying mostly on magic for offense should learn a high level non-elemental damage spell for Zot. Lehudib's Crystal Spear, Orb of Destruction, Malign Gateway, and Dragon's Call (for summoners) are all good choices. Spellforged Servitor is extremely helpful, if it can cast another high level damaging spell to begin with.
+
+Low level spells start to become useless; physical options or Evocations are better for picking off foes.
