@@ -37,5 +37,18 @@ in
         ${lib.getExe pkgs.tmux} attach-session
       '';
     };
+    "app:postgres" = {
+      exec = ''
+        if [ ! -d "./data/postgres" ]; then
+          mkdir -p ./data/postgres
+        fi
+        ${lib.getExe pkgs.docker} run \
+          -e POSTGRES_PASSWORD=postgres \
+          -p 54320:5432 -d \
+          -v ./data/postgres:/var/lib/postgresql/data \
+          --name dcss-postgres \
+          pgvector/pgvector:pg17
+      '';
+    };
   };
 }
