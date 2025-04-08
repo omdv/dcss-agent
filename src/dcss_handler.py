@@ -5,6 +5,13 @@ import shutil
 import time
 from loguru import logger
 
+class ScreenLoadError(TimeoutError):
+    """Raised when a game screen fails to load."""
+
+    def __init__(self, screen_type: str) -> None:
+        """Initialize the screen load error."""
+        super().__init__(f"Failed to load {screen_type} screen")
+
 def clean_terminal_output(ansi_output: str) -> str:
   """Remove ANSI escape codes from the output."""
   ansi_escape_color = re.compile(r"\x1b\[[0-9;]*m")
@@ -22,6 +29,9 @@ def sanitize_input(key_description: str) -> str:
       str: The actual key string to send to the game
 
   """
+  if len(key_description) == 1:
+    return key_description
+
   # First sanitize the input by removing any existing escape sequences
   sanitized = re.sub(r"[\x00-\x1f\x7f-\xff\\]", "", key_description)
   sanitized = sanitized.strip().lower()
@@ -59,14 +69,14 @@ class DCSSHandler:
     """Check if the game is running."""
     try:
       # Check if tmux session exists
-      result = subprocess.run(
+      subprocess.run(
         [shutil.which("tmux"), "has-session", "-t", self.tmux_session_name],
-        capture_output=True,
         check=False,
       )
     except subprocess.SubprocessError as e:
       logger.error(f"Error checking if game is running: {e}")
-    return result.returncode == 0
+      return False
+    return True
 
   def start_game(self) -> bool:
     """Launch DCSS in a tmux session."""
@@ -133,3 +143,59 @@ class DCSSHandler:
       )
     except subprocess.SubprocessError as e:
       logger.error(f"Error cleaning up tmux session: {e}")
+
+  def _get_specific_game_screen(
+      self,
+      key: str,
+      screen_type: str,
+      screen_search_terms: list[str],
+  ) -> str:
+    """Get a specific game screen.
+
+    Args:
+        key: The key to send to trigger the screen
+        screen_type: The type of screen being requested (for error messages)
+        screen_search_terms: List of strings to look for to confirm screen loaded
+
+    Returns:
+        str: The screen output text
+
+    Raises:
+        ScreenLoadError: If the screen doesn't load within the retry limit
+
+    """
+    self.send_key(key)
+    max_retries = 10
+    retry_interval = 0.01
+
+    for _ in range(max_retries):
+        output = self.read_output().strip()
+        if any(term in output for term in screen_search_terms):
+            self.send_key("escape")
+            return output
+        time.sleep(retry_interval)
+    raise ScreenLoadError(screen_type)
+
+  def get_character_screen(self) -> str:
+    """Get the character screen."""
+    return self._get_specific_game_screen(
+        "%",
+        "character",
+        ["Turns:", "Time:"],
+    )
+
+  def get_abilities_screen(self) -> str:
+    """Get the abilities screen."""
+    return self._get_specific_game_screen(
+        "A",
+        "abilities",
+        ["Innate Abilities"],
+    )
+
+  def get_skills_screen(self) -> str:
+    """Get the skills screen."""
+    return self._get_specific_game_screen(
+        "m",
+        "skills",
+        ["Skill"],
+    )

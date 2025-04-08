@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   pname = "dcss";
   version = "0.32.1";
@@ -14,6 +14,7 @@ in
       #!${stdenv.shell}
       ${lib.getExe pkgs.appimage-run} ${dcssAppImage} "$@"
     '')
+    docker
   ];
 
   languages.python = {
@@ -23,6 +24,18 @@ in
     uv = {
       enable = true;
       sync.enable = true;
+    };
+  };
+
+  # Add tasks section
+  tasks = {
+    "app:launch" = {
+      exec = ''
+        ${lib.getExe pkgs.tmux} new-session -d -s dcss
+        ${lib.getExe pkgs.tmux} split-window -h -p 20
+        ${lib.getExe pkgs.tmux} send-keys -t 1 'python main.py' Enter
+        ${lib.getExe pkgs.tmux} attach-session
+      '';
     };
   };
 }

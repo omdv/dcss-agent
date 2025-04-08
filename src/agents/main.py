@@ -15,8 +15,8 @@ You are an agent that needs to win "dungeon crawl stone soup" game. \
 You will get the screen and you will give interpretation of the game state and \
 propose a next keyboard button to be pressed. When you get the initial screen - choose \
 to continue the existing save game. If save game is not available - start a new game, \
-pick a beginner friendly character. Be concise. Return result in JSON format. \
-Use lowercase letters for keys. Example: {"key": "string", "reason": "string"}""",
+pick a beginner friendly character. Be concise. Return result in JSON format.
+Example: {"key": "string", "reason": "string"}""",
     )
 
   def get_agent_action(self, game_state: str) -> str:
