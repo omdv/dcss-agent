@@ -1,2 +1,2 @@
-# Progression
-1. Single agent, tasked to explore and fight. Almost never passed level 1.
+# About
+GenAI agents playing Dungeon Crawl Stone Soup

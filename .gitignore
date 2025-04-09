@@ -17,4 +17,4 @@ __pycache__
 *.pyz
 
 # data
-data/
+data

@@ -1,8 +1,16 @@
 """State agent."""
 import json
+from loguru import logger
 from pydantic_ai import Agent
 from src.models.character import DCSSCharacter
-from src.dcss_handler import DCSSHandler
+from game.game_handler import DCSSHandler
+
+class ValidationError(Exception):
+  """Validation error."""
+
+  def __init__(self, message: str) -> None:
+    """Initialize the validation error."""
+    self.message = message
 
 class StateAgent:
   """Handles the state agent."""
@@ -33,14 +41,18 @@ Instructions:
       system_prompt=prompt,
     )
 
-  def get_character_state(self) -> DCSSCharacter:
+  def get_character_state(self, retry_count: int = 0, max_retries: int = 3) -> DCSSCharacter:
     """Get the character state.
 
     Args:
-        game_handler: The game handler
+        retry_count: Current number of retries (default: 0)
+        max_retries: Maximum number of retries allowed (default: 3)
 
     Returns:
         DCSSCharacter: The parsed character state
+
+    Raises:
+        ValidationError: If validation fails after max retries
 
     """
     character_screen = self.game_handler.get_character_screen().strip()
@@ -52,5 +64,12 @@ Instructions:
     result = result.replace("```json", "").replace("```", "")
 
     character_data = json.loads(result)
-
-    return DCSSCharacter.model_validate(character_data)
+    try:
+      validated_data = DCSSCharacter.model_validate(character_data)
+    except ValidationError as e:
+      logger.error(f"Validation error (attempt {retry_count + 1}/{max_retries}): {e}")
+      if retry_count < max_retries:
+        validated_data = self.get_character_state(retry_count + 1, max_retries)
+      else:
+        raise ValidationError(f"Failed to validate character data after {max_retries} attempts")
+    return validated_data
