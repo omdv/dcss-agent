@@ -8,7 +8,12 @@ from loguru import logger
 from openai import OpenAI
 from pathlib import Path
 
-def embed_chunks(chunks: list[dict], *, update_existing: bool = False) -> None:
+def embed_chunks(
+    chunks: list[dict],
+    embedding_dimension: int = 1536,
+    *,
+    update_existing: bool = False,
+) -> None:
   """Embed chunks and update the existing index if needed."""
   logger.debug(f"Embedding {len(chunks)} chunks")
   client = OpenAI()
@@ -24,8 +29,7 @@ def embed_chunks(chunks: list[dict], *, update_existing: bool = False) -> None:
       existing_chunks = json.load(f)
   else:
     existing_chunks = []
-    dim = 1536  # dimension for text-embedding-3-small
-    index = faiss.IndexFlatL2(dim)
+    index = faiss.IndexFlatL2(embedding_dimension)
 
   # Get embeddings for new chunks
   new_embeddings = [
