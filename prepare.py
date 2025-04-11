@@ -1,7 +1,7 @@
 """Prepare the data for the RAG."""
 
 from loguru import logger
-from src.rag.chunk_embed import chunk_folder
+from src.rag.chunk import chunk_folder
 from src.rag.embed import embed_chunks
 
 if __name__ == "__main__":

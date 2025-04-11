@@ -32,6 +32,7 @@ ignore = [
   "I001",
   "INP001",
   "S603",
+  "S301",
 ]
 
 # Formatter settings
