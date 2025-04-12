@@ -38,14 +38,14 @@ class GameHandler:
         ScreenLoadError: If the screen doesn't load within the retry limit
 
     """
-    self.send_key(key)
+    self._send_key(key)
     max_retries = 10
     retry_interval = 0.01
 
     for _ in range(max_retries):
-        output = self.read_output()
+        output = self.get_game_screen()
         if any(term in output for term in screen_search_terms):
-            self.send_key("escape")
+            self._send_key("escape")
             return output
         time.sleep(retry_interval)
     raise ScreenLoadError(screen_type)
@@ -113,7 +113,7 @@ class GameHandler:
       return False
     return True
 
-  def get_game_state(self) -> str:
+  def get_game_screen(self) -> str:
     """Read the output from the tmux window."""
     try:
       result = subprocess.run(
@@ -127,9 +127,20 @@ class GameHandler:
       logger.error(f"Error reading output: {e}")
       return ""
 
+  def get_game_history(self) -> str:
+    """Get the game history."""
+    return self.action_history
+
   def get_action_history(self) -> list[dict]:
     """Get the action history."""
     return self.action_history
+
+  def _send_key(self, key: str) -> None:
+    """Send a key to the DCSS process via tmux."""
+    subprocess.run(
+      [shutil.which("tmux"), "send-keys", "-t", self.tmux_session_name, key],
+      check=False,
+    )
 
   def write_action(self, action: dict) -> None:
     """Send a key to the DCSS process via tmux."""
@@ -138,10 +149,7 @@ class GameHandler:
       self.action_history.pop(0)
     try:
       actual_key = sanitize_input(action["key"])
-      subprocess.run(
-        [shutil.which("tmux"), "send-keys", "-t", self.tmux_session_name, actual_key],
-        check=False,
-      )
+      self._send_key(actual_key)
     except subprocess.SubprocessError as e:
       logger.error(f"Error sending key: {e}")
 
